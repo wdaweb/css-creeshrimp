@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>syringe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* 選80vh或50vw中較小的當作值 */
+            --width-syringe: min(80vh, 60vw);
+
+            /* border color */
+            --border-color: rgb(145, 145, 145);
+        }
+
+        /* all */
+        div,
+        div::before,
+        div::after {
+            background: white;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 0.3) 70%, rgba(255, 255, 255, 1) 100%);
+        }
+
+        /* syringe */
+
+        #syringe {
+            /* 寬高 border */
+            width: var(--width-syringe);
+            height: calc(var(--width-syringe)/6);
+            border: 1px solid var(--border-color);
+            border-radius: calc(var(--width-syringe)/100);
+
+            /* 水平垂直置中 */
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        #syringe::before {
+            content: "";
+            position: absolute;
+
+            /* 寬高 border */
+            width: 10%;
+            height: 140%;
+            border: 1px solid var(--border-color);
+            border-radius: 10%;
+
+            /* 位移 */
+            top: 50%;
+            left: 0;
+
+            transform: translate(-96%, -50%);
+        }
+
+        #syringe::after {
+            content: "";
+            position: absolute;
+
+            /* 寬高 border */
+            width: 25%;
+            height: 0;
+            border: 1px solid var(--border-color);
+
+            /* 位移 */
+            right: 0;
+            top: 50%;
+
+            transform: translate(100%, -50%);
+        }
+
+        /* barrel */
+
+        #barrel {
+            /* 寬高 border */
+            width: 80%;
+            height: 150%;
+            border: 1px solid var(--border-color);
+
+            /* 位移 */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            /* fonr */
+            font-family: "Noto Sans", sans-serif;
+            color: gray;
+            font-size: calc(var(--width-syringe)/25);
+
+            /* 文字靠下對齊 */
+            display: flex;
+            flex-flow: column;
+            justify-content: end;
+
+            /* 漸層 */
+            background: linear-gradient(90deg, white 50%, rgb(255, 255, 157) 50%);
+        }
+
+        #barrel::before {
+            content: "";
+
+            /* 寬高 */
+            width: 100%;
+            height: 16%;
+
+            /* 位移 */
+            position: absolute;
+            top: 0;
+            left: 0;
+
+
+            /* 漸層做刻度 */
+            /* repeating-linear-gradient 直接製造重複漸層
+
+                repeating-linear-gradient([角度], [顏色1] 0, [顏色1] 5%, [顏色2] 5%, [顏色2] 10%);
+                上面這段的意思是: 顏色1從0~5%, 顏色2從5%~10%，剩下重複
+                定位點也可以寫px等固定單位
+            */
+            /* background: repeating-linear-gradient(90deg, #e66465 0, #e66465 3.5%, #9198e5 3.5%, #9198e5 4%); */
+            background: repeating-linear-gradient(90deg, transparent 0, transparent 3.8%, #00000085 3.8%, #00000085 4.2%);
+        }
+
+        #barrel::after {
+            content: "";
+
+
+            /* 寬高 */
+            width: 10%;
+            height: 100%;
+            background: black;
+
+            /* 位移 */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .gradient {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            mix-blend-mode: multiply;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="syringe">
+        <div id="barrel">
+            Made in Taiwan
+            <div class="gradient"></div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>熊讚</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        :root {
+            /* 選80vh或50vw中較小的當作值 */
+            --width-bearGood: min(50vh, 30vw);
+        }
+
+        #bearGood,
+        #bearGood::before,
+        #bearGood::after,
+        #ears::before,
+        #ears::after,
+        #blush::before,
+        #blush::after,
+        #eyes::before,
+        #eyes::after,
+        #nose_mouse,
+        #nose_mouse::before,
+        #nose_mouse::after {
+            border-radius: 100%;
+        }
+
+        #bearGood {
+            width: var(--width-bearGood);
+            height: var(--width-bearGood);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: black;
+        }
+
+        #bearGood::before,
+        #bearGood::after {
+            width: calc(var(--width-bearGood) / 4);
+            height: calc(var(--width-bearGood) / 4);
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+
+        #bearGood::before {
+            content: "";
+            background: red;
+            left: -5%;
+        }
+
+        #bearGood::after {
+            content: "";
+            background: red;
+            right: -5%;
+        }
+
+        /* ears */
+        #ears::before,
+        #ears::after {
+            border: black calc(var(--width-bearGood) / 28) solid;
+            width: 18%;
+            height: 18%;
+            position: absolute;
+        }
+
+        #ears::before {
+            content: "";
+            background: white;
+            transform: translate(20%, 20%);
+        }
+
+        #ears::after {
+            content: "";
+            background: white;
+            top: 0;
+            right: 0;
+            transform: translate(-20%, 20%);
+        }
+
+        #eyes::before,
+        #eyes::after {
+            content: "";
+            background: black;
+            width: calc(var(--width-bearGood) / 5);
+            height: calc(var(--width-bearGood) / 5);
+            border: white calc(var(--width-bearGood) / 30) solid;
+            position: absolute;
+            top: 30%;
+            transform: translate(0, -50%);
+        }
+
+        #eyes::before {
+            left: 20%;
+        }
+
+        #eyes::after {
+            right: 20%;
+        }
+
+        #nose_mouse {
+            width: 45%;
+            height: 30%;
+            background: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -35%);
+        }
+
+        #nose_mouse::before,
+        #nose_mouse::after {
+            content: "";
+            background: black;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+
+        #nose_mouse::before {
+            width: 25%;
+            height: 25%;
+            top: 10%;
+        }
+
+        #nose_mouse::after {
+            width: 63%;
+            height: 37%;
+            bottom: 16%;
+        }
+
+        #vSign {
+            width: 40%;
+            height: 13%;
+            /* background: gray; */
+            position: absolute;
+            bottom: 8%;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+
+        #vSign::before,
+        #vSign::after {
+            content: "";
+            width: 31%;
+            height: 100%;
+            background: white;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+        }
+
+        #vSign::before {
+            transform: translate(-50%, 0) skewX(-311deg);
+            transform-origin: bottom right;
+        }
+
+        #vSign::after {
+            transform: translate(-50%, 0) skewX(311deg);
+            transform-origin: bottom left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bearGood">
+        <div id="ears"></div>
+        <div id="eyes"></div>
+        <div id="nose_mouse"></div>
+        <div id="vSign"></div>
+    </div>
+</body>
+
+</html>
